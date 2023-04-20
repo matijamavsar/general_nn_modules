@@ -1,0 +1,5 @@
+db:
+  _target_: .dummy_example.dummy_datamodule.DummyDataModule
+  args:
+    dataset_arg_1: 10
+    dataset_arg_2: 20

@@ -1,0 +1,32 @@
+db:
+  _target_: .projects.rimednet.datamodules.PicklePNGData
+  args:
+    data_load_path: [
+      '/data/PandaHandover2_all/TR_RANDOMS_SS7_1',
+      '/data/RealPandaHandover2_rr_train/TR_RANDOMS_SS7eq_1',
+      '/data/RealPandaHandover2_rr_train_new/TR_RANDOMS_SS7eq_1',
+      '/data/RealPandaHandover2_rr_val/TR_RANDOMS_SS7eq_1',
+      ]
+    pytorch_pickle_data_regex: 'sample_\d+_data.pkl'
+    pytorch_pickle_rgb_regex: 'sample_\d+_rgb.png'
+    pytorch_pickle_dep_regex: 'sample_\d+_dep.png'
+    tranlist: [
+      # "transforms.SubSample(5)",
+      # "transforms.Transpose()",
+
+      # "transforms.RandomTransforms([227, 227, -1], 1, -1, 0.2, 0.0005)",
+      # "transforms.RandomTransforms([120, 160], 3, 0.2, 0.3, 0.0015, 0.5)", # for highrandoms
+      # "transforms.RandomTransforms([120, 160, -1], 1, -1, 0.1, 0.0005)", # for val
+      # "transforms.RandomTransforms([120, 160, -1], 0, -1, 0, 0)", # for test
+      # "transforms.Normalize(mean=[0.485, 0.456, 0.406],
+      #                       std=[0.229, 0.224, 0.225])"
+    ]
+    test_set: '/data/RealPandaHandover2_test/TR_RANDOMS_SS7eq_1'
+    extend: True
+    indices_path:
+    split_seed: 42
+    batch_size: 8
+    model_save_path:
+    data_percent: [1, 1, 1, 1]
+    train_percent: [1, 1, 1, 0]
+    num_workers: 4

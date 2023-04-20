@@ -1,0 +1,27 @@
+db:
+  _target_: .projects.medianet.data.MediaData
+  args:
+    data_load_path: [
+      '/data/CollaborateData/TR3D_train_1',
+      '/data/CollaborateData/TR3D_train_2',
+      '/data/CollaborateData/TR3D_train_3',
+      '/data/CollaborateData/TR3D_train_4',
+      '/data/CollaborateData/TR3D_train_5',
+      '/data/CollaborateData/TR3D_train_6',
+      '/data/CollaborateData/TR3D_val_1',
+      '/data/CollaborateData/TR3D_val_2',
+      '/data/CollaborateData/TR3D_val_3',
+      '/data/CollaborateData/TR3D_val_4',
+      '/data/CollaborateData/TR3D_val_5',
+      '/data/CollaborateData/TR3D_val_6',
+      ]
+    pytorch_pickle_regex: 'sample_\d+_data.pkl'
+    test_set: '/data/RealPandaHandover2_test/TR_RANDOMS_SS7eq_1'
+    extend: True
+    indices_path:
+    split_seed: 42
+    batch_size: 150
+    model_save_path:
+    data_percent: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    train_percent: [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+    num_workers: 10

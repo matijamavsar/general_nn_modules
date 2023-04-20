@@ -1,0 +1,6 @@
+network:
+  _target_: .dummy_example.dummy_nn.DummyNetwork
+  args:
+    dev: cuda:0
+    lr: 0.001
+    weight_decay: 1e-4

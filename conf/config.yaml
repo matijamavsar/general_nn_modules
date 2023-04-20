@@ -1,0 +1,7 @@
+defaults:
+  - db/video_traj_dmp_dataset
+  - network/intentnet
+  - pl_trainer/default
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d-%H-%M-%S}

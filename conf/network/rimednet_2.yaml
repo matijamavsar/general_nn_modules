@@ -1,0 +1,20 @@
+network:
+  _target_: .projects.rimednet.rimednet_2.RIMEDNet
+  args:
+    dev: cuda:0
+    lr: [0.001, 0.001]
+    lr_scheduler: CyclicLR
+    resume_path:
+    train_data_norms: /data/PandaHandover2/TR_RANDOMS_SS7_1/
+    test_data_norms: /data/PandaHandover2/TR_RANDOMS_SS7_1/
+    norm_type: min-max-norm
+    extend:
+    sig_mse_weight: 10.0
+    w_g: 4
+    w_tau: 10
+    train_scenario: gc
+    test_results_dir: /data/PandaHandover2_results
+    test_interval: 1
+    use_pretrained: false
+    using_traj_loss: false
+    weight_decay: 0

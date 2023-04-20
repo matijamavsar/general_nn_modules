@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  pytorch_lightning_docker:
+    image: pytorchlightning/pytorch_lightning:latest
+    container_name: pylightning_docker
+    working_dir: /home/gnn_intentnet
+    volumes:
+      - /home/mmavsar/gnn_intentnet:/home/gnn_intentnet
+      - /data:/data
+      - /home/share/Data:/home/share/Data
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
+      - /tmp/.X11-unix:/tmp/.X11-unix #for using local xserver
+    environment:
+      - "DISPLAY=$DISPLAY"
+    network_mode: "host"
+    ipc: "host"
+    shm_size: 26gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    privileged: true
+    tty: true
+

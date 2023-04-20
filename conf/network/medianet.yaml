@@ -1,0 +1,13 @@
+network:
+  _target_: .projects.medianet.medianet.MediaNet
+  args:
+    dev: cuda:0
+    sig_nll_weight: 1.0
+    lr: 0.00005
+    weight_decay: 1e-4
+    use_residual: true
+    rnn_type: LSTM
+    c_weight: [1.0, 1.5, 1.0, 1.0]
+    test_interval: 1
+    resume_path:
+    extend:

@@ -1,0 +1,9 @@
+network:
+  _target_: .projects.intentnet.optinet.OptiNet
+  args:
+    dev: cuda:0
+    sig_nll_weight: 5.0
+    lr: 0.00005
+    weight_decay: 1e-4
+    test_interval: 4
+    resume_path:

@@ -1,0 +1,18 @@
+network:
+  _target_: .projects.talosnet.talosnet.TalosNet
+  args:
+    dev: cuda:0
+    sig_mse_weight: 1.0
+    lr: 0.00005
+    weight_decay: 1e-4
+    use_residual: false
+    rnn_type: LSTM
+    test_interval: 1
+    resume_path:
+    extend:
+
+    plot_set: '/data/TalosHandoverData/raw_final'
+    color_video_regex: 'body_rgb_video_\d+.avi'
+    depth_video_regex: 'body_depth_video_\d+.avi'
+    camera_regex: 'body_camera_\d+.npy'
+    data_regex: 'body_landmarks_\d+.npy'

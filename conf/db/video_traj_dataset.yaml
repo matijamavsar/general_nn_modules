@@ -1,0 +1,23 @@
+db:
+  _target_: .projects.intentnet.video_traj_dataset.VideoTrajDataset
+  args:
+    pytorch_pickle_regex: 'sample_\d+.pkl'
+    data_load_path: [
+      '/home/share/Data/HandOptiTrack_fullTrayAll/TR1_RANDOMS_1_TRAIN/',
+      '/home/share/Data/HandOptiTrack_fullTrayAll/TR1_RANDOMS_2_TRAIN/',
+      '/home/share/Data/HandOptiTrack_fullTrayAll/TR1_HIGHRANDOMS_1_TRAIN/',
+      '/home/share/Data/HandOptiTrack_emptyTray/TR1_RANDOMS_1_TRAIN/',
+      '/home/share/Data/HandOptiTrack_emptyTray/TR1_RANDOMS_2_TRAIN/',
+      '/home/share/Data/HandOptiTrack_emptyTray/TR1_HIGHRANDOMS_1_TRAIN/',
+      '/home/share/Data/HandOptiTrack_emptyTray/TR1_HIGHRANDOMS_2_TRAIN/',
+      '/home/share/Data/HandOptiTrack_emptyTray_val/TR1_RANDOMS_1_VAL/',
+      '/home/share/Data/HandOptiTrack_emptyTray_val/TR1_RANDOMS_2_VAL/'
+      ]
+    test_set: '/home/share/Data/HandOptiTrack_emptyTray_test/TR1_NONE_1_TEST/'
+    extend: False
+    indices_path:
+    split_seed:
+    batch_size: 100
+    model_save_path:
+    train_percent: [1, 1, 1, 1, 1, 1, 1, 0, 0]
+    num_workers: 10

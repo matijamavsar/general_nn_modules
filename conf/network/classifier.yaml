@@ -1,0 +1,2 @@
+network:
+  _target_: .example_classifier.example_classifier.LitClassifier

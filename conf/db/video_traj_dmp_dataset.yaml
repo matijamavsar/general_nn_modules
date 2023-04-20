@@ -1,0 +1,29 @@
+db:
+  _target_: .projects.rimednet.datamodules.PickleData
+  args:
+    data_load_path: [
+      '/home/share/Data/ObjectHandover/TR_RANDOMS_1'
+      ]
+    pytorch_pickle_regex: 'sample_\d+.pkl'
+    rgb_video_regex: 'panda_pyrep_rgb_\d+.avi'
+    depth_video_regex: 'panda_pyrep_depth_\d+.avi'
+    traj_regex: 'panda_pyrep_desired_cartesian_trajectories_\d+.pkl'
+    tranlist: [
+      "transforms.SubSample(7)",
+      "transforms.Transpose()",
+
+      "transforms.RandomTransforms([227, 227, -1], 1, -1, 0.2, 0.0005)",
+      # "transforms.RandomTransforms([120, 160], 3, 0.2, 0.3, 0.0015, 0.5)", # for highrandoms
+      # "transforms.RandomTransforms([120, 160, -1], 1, -1, 0.1, 0.0005)", # for val
+      # "transforms.RandomTransforms([120, 160, -1], 0, -1, 0, 0)", # for test
+      "transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                           std=[0.229, 0.224, 0.225])"
+    ]
+    test_set: '/home/share/Data/PandaHandover2_real_test/TR_RANDOMS_2'
+    extend: False
+    indices_path:
+    split_seed:
+    batch_size: 20
+    model_save_path:
+    train_percent: [0.9]
+    num_workers: 10

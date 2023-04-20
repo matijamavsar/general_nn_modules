@@ -1,0 +1,17 @@
+db:
+  _target_: .projects.talosnet.data.TalosData
+  args:
+    data_load_path: [
+      '/data/TalosHandoverData/transformed_final/train',
+      '/data/TalosHandoverData/transformed_final/val',
+      ]
+    pytorch_pickle_regex: 'sample_\d+_data.pkl'
+    test_set: '/data/TalosHandoverData/transformed_final/test'
+    extend: True
+    indices_path:
+    split_seed: 42
+    batch_size: 150
+    model_save_path:
+    data_percent: [1, 1]
+    train_percent: [1, 0]
+    num_workers: 10
