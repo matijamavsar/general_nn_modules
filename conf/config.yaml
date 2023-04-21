@@ -1,6 +1,6 @@
 defaults:
-  - db/video_traj_dmp_dataset
-  - network/intentnet
+  - db/mnist
+  - network/classifier
   - pl_trainer/default
 hydra:
   run:

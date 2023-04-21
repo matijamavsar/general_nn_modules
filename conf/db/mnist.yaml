@@ -1,0 +1,2 @@
+db:
+  _target_: .example_classifier.example_datamodule.MNISTDataModule
