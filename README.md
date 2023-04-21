@@ -61,8 +61,6 @@ python train_hydra.py +network=classifier ++pl_trainer.max_epochs=2
 
 The configuration files are usually stored in the `conf` folder. The defaults are stored in `conf/config.yaml`.
 
-You can check out some example conf files in the repositories `imednet/branch rimednet_lightning` or `intentnet/` branch `alt`.
-
 # Steps to make your own project
 
 1. Add a new directory `my_project` into the `projects` directory.
