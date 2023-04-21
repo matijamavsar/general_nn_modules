@@ -28,12 +28,35 @@ def main(cfg: DictConfig) -> Trainer:
 
     network = instantiate(cfg.network)['network']
 
+    # (Optional) Define whether you want the trainer to
+    # early_stop or create checkpoints based on some metric
+    #######################################################
+    METRIC = 'val_error'
+    MODE = 'min'
+    print('----------------------')
+    print('Using metric:', METRIC, '\nmode:', MODE)
+    print('----------------------')
+    #######################################################
+
+    # If using metric, define the callbacks
+    early_stop_callback = EarlyStopping(
+        monitor=METRIC, min_delta=0.00,
+        patience=100, verbose=False,
+        mode=MODE)
+    checkpoint_callback = ModelCheckpoint(
+        monitor=METRIC, mode=MODE,
+        filename='model_best_' + METRIC,
+        save_last=True)
+
     # If using callbacks, include them in the Trainer object
-    trainer = Trainer(**cfg.pl_trainer,
-        logger=False,
+    trainer = Trainer(**cfg.pl_trainer, callbacks=[
+        early_stop_callback, 
+        checkpoint_callback
+        ], logger=False,
         strategy=None, accelerator="gpu",
         )
     trainer.fit(network, train_dl, val_dl)
+    print('Best checkpoint path:', checkpoint_callback.best_model_path)
 
     return 0
 

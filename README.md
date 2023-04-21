@@ -47,7 +47,7 @@ pip install hydra-core --upgrade
 ```
 
 # Example for training a MNIST classifier
-
+To start training an example classifier, run
 ```
 python train_hydra.py 
 ```
@@ -86,6 +86,8 @@ You can check out some example conf files in the repositories `imednet/branch ri
 See the files in the `dummy_example` directory, as well as dummy YAML files `conf/db/dummy_dataset.yaml` and `conf/network/dummy_network.yaml` for more detailed instructions.
 
 Two working examples are also available in `projects/intentnet` and `projects/talosnet` directories. These utilize early stopping using `self.log()` function.
+
+The `intentnet` project trains a network that classifies input RGBD videos into a limited set of labels, while the `talosnet` projects predicts the goal location of the human hand based on an input sequence of past hand position measurements.
 
 ## About the `conf` folder
 
